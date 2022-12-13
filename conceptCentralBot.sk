@@ -1,0 +1,28 @@
+every 10 minutes:
+	make console execute command "/sk reload conceptCentralBot.sk" # Instance Refreshing
+
+on load:
+	
+	set the presence of the bot named "ConceptCentral" to listening "to Concept Central Youtube Videos!"
+
+	add "995187601441038338" parsed as role to {roles::*}
+	add "995187741073604698" parsed as role to {roles::*}
+	add "995187932589735966" parsed as role to {roles::*}
+	add "996095872117002411" parsed as role to {roles::*}
+	add "1019402298071470151" parsed as role to {roles::*}
+	
+	set {squadless} to "" # Role ID for Squadless
+
+on discord role add seen by "ConceptCentral": # Event for role addition
+	set {_value::*} to all the roles of event-member # Checking roles of member
+	loop {_value::*}: # Looping roles of member
+		if {roles::*} contains discord id of loop-value: # Check if role id is contained in the reaction role list
+			remove role with id "%{squadless}%" from roles of event-member # Removing squadless
+
+on discord role remove seen by "ConceptCentral": # Event for role addition
+	set {_value::*} to all the roles of event-member # Checking roles of member
+	loop {_value::*}: # Looping roles of member
+		if {roles::*} contains discord id of loop-value parsed as role: # Check if role id is contained in the reaction role list
+			add 1 to {_count} # Adding to a count if a role is detected
+	if {_count} <= 0: # If no reaction roles are detected
+		add role with id "%{squadless}%" to roles of event-member # Adding squadless
