@@ -16,7 +16,7 @@ on load:
 on discord role add seen by "ConceptCentral": # Event for role addition
 	set {_value::*} to all the roles of event-member # Checking roles of member
 	loop {_value::*}: # Looping roles of member
-		if {roles::*} contains discord id of loop-value: # Check if role id is contained in the reaction role list
+		if {roles::*} contains discord id of loop-value parsed as role: # Check if role id is contained in the reaction role list
 			remove role with id "%{squadless}%" from roles of event-member # Removing squadless
 
 on discord role remove seen by "ConceptCentral": # Event for role addition
