@@ -1,2 +1,4 @@
 # Squadless-Concept-Central
-Simple bot done in Skript for the Concept Central Discord | Please do not use this code
+Simple bot done for the Concept Central Discord
+## Bot was hardcoded for the roles :3, please just reference the code if you're going to use it ^^ 
+*Open sourced it so people can see the code <3*
